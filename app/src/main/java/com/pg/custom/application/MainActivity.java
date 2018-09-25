@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -77,6 +78,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void changeColor(int colorId) {
                 tv_demo.setTextColor(colorId);
+            }
+
+            @Override
+            public void changePosition(float percent) {
+                Log.i("pgPercent",percent+"====");
             }
         });
         rulerView = (RulerView)findViewById(R.id.rulerView);

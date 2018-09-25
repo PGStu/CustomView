@@ -9,6 +9,7 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -119,7 +120,7 @@ public class ColorView extends View {
         super.onDraw(canvas);
         mRectBitmap.left = mBitmapLeft + mOutCirclePaintStrokeWidth;
         mRectBitmap.top = mBitmapTop + mOutCirclePaintStrokeWidth;
-        mRectBitmap.right = getRight() - getLeft() - mOutCirclePaintStrokeWidth;
+        mRectBitmap.right = getRight() - getLeft() - mOutCirclePaintStrokeWidth-mCircleRadius;
         mRectBitmap.bottom = mBitmapTop + mBitmapHeight + mOutCirclePaintStrokeWidth;
         //画颜色条
         canvas.drawBitmap(mColorBitmap, null, mRectBitmap, mBitmapPaint);
@@ -144,14 +145,13 @@ public class ColorView extends View {
             case MotionEvent.ACTION_MOVE:
                 if ((int) event.getX() < mCircleX) {
                     moveX = 0;
-                } else if ((int) event.getX() > getRight() - mBitmapLeft - getLeft() -
-                        mCircleRadius - mOutCirclePaintStrokeWidth * 2) {
-                    moveX = getRight() - mBitmapLeft - getLeft() - mCircleRadius -
-                            mOutCirclePaintStrokeWidth * 2;
+                } else if ((int) event.getX() > getRight() - mBitmapLeft - getLeft()-mCircleRadius ) {
+                    moveX = getRight() - mBitmapLeft - getLeft()-mCircleRadius ;
                 } else {
                     moveX = (int) event.getX();
                 }
-                if (moveX <= (getRight() - mBitmapLeft - getLeft()) * ((float) 24 / 760)) {
+
+                if (moveX <= (getRight() - mBitmapLeft - getLeft()-mCircleRadius) * ((float) 24 / 760)) {
                     mInnerCircleColor = Color.argb(0, 0, 0, 0);
                 } else {
                     int bitmapX = (int) ((x) * ((mColorBitmap.getWidth() / mRectBitmap.width())));
@@ -165,9 +165,13 @@ public class ColorView extends View {
                     int resB = Color.blue(pixelBitmpa);
                     mInnerCircleColor = Color.argb(resA, resR, resG, resB);
                 }
+                mPercent = moveX/(float)(getRight() - mBitmapLeft - getLeft()-mCircleRadius);
                 if (mOnColorChangeListener != null){
                     mOnColorChangeListener.changeColor(mInnerCircleColor);
+                    mOnColorChangeListener.changePosition(mPercent);
                 }
+
+
                 invalidate();
                 return true;
             case MotionEvent.ACTION_CANCEL:
@@ -176,6 +180,17 @@ public class ColorView extends View {
         return super.onTouchEvent(event);
     }
 
+    private float mPercent = 0;
+
+    /**
+     * 获取选中的位置百分比
+     *
+     * @return
+     */
+
+    public float getSelectPosition() {
+        return mPercent;
+    }
     /**
      * 获取选中的颜色
      *
@@ -193,6 +208,7 @@ public class ColorView extends View {
     // 颜色改变监听
     public interface OnColorChangeListener {
         void changeColor(int colorId);
+        void changePosition(float percent);
     }
 
 }
