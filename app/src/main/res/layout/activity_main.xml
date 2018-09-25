@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.pg.custom.application.MainActivity"
+    android:background="#05000000">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--<com.xj.tutu.application.TimeLineView-->
+        <!--android:id="@+id/timeLineView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:padding="5dp">-->
+
+    <!--</com.xj.tutu.application.TimeLineView>-->
+
+    <TextView
+        android:id="@+id/et"
+        android:text="55"
+        android:background="#ccc"
+        android:layout_width="120dp"
+        android:layout_height="60dp" />
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <Button
+        android:onClick="btnClick"
+        android:text="开启"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+        <Button
+            android:onClick="btnCancle"
+            android:text="停止"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:onClick="btnStopDraw"
+            android:text="停止画色"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:onClick="btnClear"
+            android:text="删色"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+    <com.pg.custom.application.playview.PlayView
+        android:id="@+id/lineView"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+    </com.pg.custom.application.playview.PlayView>
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:onClick="btnDraw"
+            android:text="画色1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:onClick="btnDraw2"
+            android:text="画色2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:onClick="btnDraw3"
+            android:text="画色3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:onClick="btnDraw4"
+            android:text="画色4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:text="1111"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <com.pg.custom.application.playview.PlayView
+            android:id="@+id/lineView2"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+        </com.pg.custom.application.playview.PlayView>
+    </LinearLayout>
+
+
+
+    <com.pg.custom.application.playview.PlayView
+        android:id="@+id/lineView3"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+    </com.pg.custom.application.playview.PlayView>
+
+
+    <com.pg.custom.application.playview.PlayView
+        android:layout_marginLeft="40dp"
+        android:id="@+id/lineView4"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+    </com.pg.custom.application.playview.PlayView>
+
+
+    <com.pg.custom.application.ruler.RulerView
+        android:id="@+id/rulerView"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="你好啊"
+            android:id="@+id/tv_demo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <com.pg.custom.application.color.ColorView
+            android:id="@+id/colorview"
+            android:layout_marginLeft="60dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</LinearLayout>
